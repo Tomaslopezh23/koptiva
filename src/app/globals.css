@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Helvetica Neue LT Std 63 Medium Extended';
+  src: url('/fonts/HelveticaNeueLTStd-MdExt.woff2') format('woff2'); /* IMPORTANT: Ensure this filename matches your font file in public/fonts/ */
+  font-weight: 500; /* Medium */
+  font-style: normal;
+  font-display: swap;
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.initial-slide-in-bottom {
+  animation: slideInFromBottom 0.7s ease-out forwards;
+}
+
+@keyframes fadeInAndUnblurHeader {
+  0% {
+    opacity: 0;
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+.header-content-fade-unblur {
+  animation: fadeInAndUnblurHeader 0.7s ease-out forwards;
+}
+
+@keyframes fadeOutMainBlack {
+  0% {
+    background-color: black;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.main-bg-fade-out {
+  background-color: black; /* Initial state */
+  animation-name: fadeOutMainBlack;
+  animation-duration: 1s;
+  animation-delay: 1s; /* Delay before starting the fade */
+  animation-fill-mode: forwards; /* Stay transparent after animation */
+}
+
+/* Combined Keyframes for Hero Text Loop */
+/* Total cycle duration: 18s. */
+/* Fade-in durations vary. Fade-out for all: 1.4s (from 15.3s to 16.7s). Then hold at 0.2 opacity until 18s. */
+
+@keyframes hero-text-loop-sequence-1 {
+  0% { opacity: 0; } /* Initial state (0s) */
+  5.56% { opacity: 0; } /* (1s / 18s) - Start fade-in */
+  13.89% { opacity: 1.0; } /* (2.5s / 18s) - End fade-in */
+  85% { opacity: 1.0; } /* (15.3s / 18s) - Start fade-out */
+  92.78% { opacity: 0; } /* (16.7s / 18s) - End fade-out */
+  100% { opacity: 0; } /* Hold at 0.2 until end of cycle (18s) */
+}
+
+@keyframes hero-text-loop-sequence-2 {
+  0% { opacity: 0; } /* Initial state (0s) */
+  28.89% { opacity: 0; } /* (5.2s / 18s) - Start fade-in */
+  37.22% { opacity: 1.0; } /* (6.7s / 18s) - End fade-in */
+  85% { opacity: 1.0; } /* (15.3s / 18s) - Start fade-out */
+  92.78% { opacity: 0; } /* (16.7s / 18s) - End fade-out */
+  100% { opacity: 0; } /* Hold at 0.2 until end of cycle (18s) */
+}
+
+@keyframes hero-text-loop-sequence-3 {
+  0% { opacity: 0; } /* Initial state (0s) */
+  56.67% { opacity: 0; } /* (10.2s / 18s) - Start fade-in */
+  65% { opacity: 1.0; } /* (11.7s / 18s) - End fade-in */
+  85% { opacity: 1.0; } /* (15.3s / 18s) - Start fade-out */
+  92.78% { opacity: 0; } /* (16.7s / 18s) - End fade-out */
+  100% { opacity: 0; } /* Hold at 0.2 until end of cycle (18s) */
+}
+
+.hero-text-fade-loop-1 {
+  animation: hero-text-loop-sequence-1 18s ease-out infinite;
+  animation-fill-mode: both;
+}
+
+.hero-text-fade-loop-2 {
+  animation: hero-text-loop-sequence-2 18s ease-out infinite;
+  animation-fill-mode: both;
+}
+
+.hero-text-fade-loop-3 {
+  animation: hero-text-loop-sequence-3 18s ease-out infinite;
+  animation-fill-mode: both;
+}
+
+.text-shadow-around {
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+
+@layer base {
+  :root {
+    --background: 220 33% 86%; /* #D2DDEB - Darker Grayish Blue */
+    --foreground: 222 39% 11%; /* #111827 - Dark Slate */
+    
+    --card: 0 0% 90%; /* #E6E6E6 - Gray */
+    --card-foreground: 222 39% 11%; /* Dark Slate */
+    
+    --popover: 0 0% 90%; /* #E6E6E6 - Gray */
+    --popover-foreground: 222 39% 11%; /* Dark Slate */
+    
+    --primary: 236 24% 38%; /* #4A4D7A - Professional Grayish Blue */
+    --primary-foreground: 0 0% 100%; /* White */
+    
+    --secondary: 231 27% 55%; /* #6D77AB - Significantly darker grayish blue */
+    --secondary-foreground: 222 39% 11%; /* Dark Slate */
+    
+    --muted: 220 14% 82%; /* #CACFD8 - Darker muted background */
+    --muted-foreground: 220 13% 43%; /* #64748B - Slate 500 equivalent for muted text */
+    
+    --accent: 145 63% 45%; /* #22C55E - Bright Green */
+    --accent-foreground: 0 0% 100%; /* White for contrast on green */
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 220 14% 82%; /* #CACFD8 - Darker border */
+    --input: 0 0% 88%; /* #E0E0E0 - Darker input backgrounds */
+    --ring: 236 24% 38%; /* Primary color for focus rings */
+    
+    --radius: 1rem; /* Updated for 1rem card corners */
+
+    /* Sidebar variables */
+    --sidebar-background: 0 0% 88%; /* #E0E0E0 */
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 86%; /* #D8D9E2 */
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 84%; /* #D0D3DA */
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Dynamic background stops for body */
+    --section-top-y: 100px; /* Default: right after the black bar */
+    --section-quarter-y: 100px; /* Default: same as top */
+    --section-mid-y: 100px;   /* Default: same as top */
+  }
+
+  .dark {
+    --background: 222 39% 11%; /* #111827 */
+    --foreground: 220 33% 97%; /* #F5F7FA */
+    
+    --card: 222 39% 14%; /* Slightly lighter than background */
+    --card-foreground: 220 33% 97%; /* #F5F7FA */
+    
+    --popover: 222 39% 14%;
+    --popover-foreground: 220 33% 97%;
+    
+    --primary: 236 24% 48%; /* #4A4D7A, maybe a bit lighter/more saturated for dark */
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 236 24% 28%; /* Darker tint of primary */
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 220 14% 20%; /* Darker gray */
+    --muted-foreground: 220 13% 73%; /* Lighter gray for dark muted text */
+    
+    --accent: 145 63% 45%; /* #22C55E */
+    --accent-foreground: 222 39% 11%; /* Dark text on green for dark mode if needed, or keep white */
+    
+    --destructive: 0 72.2% 50.6%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 220 14% 25%; /* Darker border */
+    --input: 222 39% 16%; /* Dark input background */
+    --ring: 236 24% 48%;
+
+    /* Dark Sidebar */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    background: linear-gradient(
+      to bottom,
+      black 0px,
+      black 100px,                                 /* End of black bar */
+      #0e0e15 100px,                               /* Start of default dark bg */
+      #0e0e15 var(--section-top-y),                /* Default dark bg ends, #141a20 starts */
+      #141a20 var(--section-top-y),                /* #141a20 starts */
+      #141a20 var(--section-quarter-y),            /* #141a20 ends, #1e1e2a starts */
+      #1e1e2a var(--section-quarter-y),            /* #1e1e2a starts */
+      #1e1e2a var(--section-mid-y),                /* #1e1e2a ends, default dark resumes */
+      #0e0e15 var(--section-mid-y),                /* Default dark resumes */
+      #0e0e15 100%                                  /* Default dark to bottom */
+    );
+    @apply text-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline;
+  }
+  p, span, div, button, a, input, textarea, label, select {
+    @apply font-body;
+  }
+}
