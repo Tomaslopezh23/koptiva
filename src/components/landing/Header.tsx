@@ -10,8 +10,9 @@ import { AppointmentModal } from './AppointmentModal';
 import whatsappIconPng from '@/components/icons/whatsapplogo.png';
 import { Menu, X } from 'lucide-react';
 
-const WHATSAPP_NUMBER = "573108740006";
+const WHATSAPP_NUMBER = "573203436843";
 const WHATSAPP_MESSAGE = "Hola, me gustaría obtener más información sobre sus servicios.";
+const CALENDLY_LINK = "https://calendly.com/sara-koptiva/30min";
 
 export function Header() {
   const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
@@ -35,11 +36,11 @@ export function Header() {
           <Link href="/#contacto-final" className="text-sm font-medium text-white/80 hover:text-white transition-colors px-2 py-1 rounded-md hover:bg-primary-foreground/10">
             Contáctanos
           </Link>
-          <AppointmentModal
-            triggerButtonText="Agenda una llamada"
-            triggerButtonVariant="ghost"
-            triggerButtonClassName="text-sm font-medium !text-white/80 hover:!text-white hover:!bg-primary-foreground/10"
-          />
+          <Button asChild variant="ghost" className="text-sm font-medium !text-white/80 hover:!text-white hover:!bg-primary-foreground/10">
+              <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer">
+                Agenda una llamada
+              </a>
+          </Button>
           <Button
             asChild
             className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl flex items-center gap-2 shadow-md transition"
@@ -84,11 +85,15 @@ export function Header() {
               Contáctanos
             </Link>
             <div className="w-full" onClick={() => setIsMobileMenuOpen(false)}>
-              <AppointmentModal
-                triggerButtonText="Agenda una llamada"
-                triggerButtonVariant="ghost"
-                triggerButtonClassName="w-full text-center text-base !text-white/90 hover:!text-white !bg-transparent py-2.5 px-4 rounded-md hover:!bg-white/10 transition-colors"
-              />
+            <Button
+              asChild
+              variant="ghost"
+              className="w-full text-center text-base !text-white/90 hover:!text-white !bg-transparent py-2.5 px-4 rounded-md hover:!bg-white/10 transition-colors"
+            >
+              <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)}>
+                Agenda una llamada
+              </a>
+            </Button>
             </div>
             <Button
               asChild

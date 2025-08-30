@@ -7,8 +7,10 @@ import { Button } from "@/components/ui/button";
 import { AppointmentModal } from "./AppointmentModal";
 import whatsappIconPng from '@/components/icons/whatsapplogo.png';
 
-const WHATSAPP_NUMBER = "573108740006";
+const WHATSAPP_NUMBER = "573203436843";
 const WHATSAPP_MESSAGE = "Hola, estoy interesado en automatizar mi operación.";
+
+const CALENDLY_LINK = "https://calendly.com/sara-koptiva/30min";
 
 interface HeroSectionProps {
   videoIsConfirmedPlaying: boolean;
@@ -57,11 +59,14 @@ export function HeroSection({ videoIsConfirmedPlaying }: HeroSectionProps) {
               Contactanos por WhatsApp
             </a>
           </Button>
-          <AppointmentModal
-            triggerButtonText="Agenda una llamada rápida"
-            triggerButtonVariant="default" 
-            triggerButtonClassName="bg-[#3B3F75] hover:bg-[#50548F] text-white px-6 py-3 rounded-full shadow-md transition"
-          />
+          <Button
+            asChild
+            className="bg-[#3B3F75] hover:bg-[#50548F] text-white px-6 py-3 rounded-full shadow-md transition"
+          >
+            <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer">
+              Agenda una llamada rápida
+            </a>
+          </Button>
         </div>
 
         <div className="mt-8 flex flex-col sm:flex-row justify-center items-stretch sm:gap-2 text-center">

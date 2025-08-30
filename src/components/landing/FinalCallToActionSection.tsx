@@ -10,12 +10,14 @@ export function FinalCallToActionSection() {
           Agenda una llamada rápida para conocernos, entender tus necesidades y mostrarte cómo la automatización puede transformar tu día a día.
         </p>
         <div className="flex justify-center">
-          <a 
-            href="#agenda" 
-            className="bg-green-500 hover:bg-green-600 transition-all duration-300 text-white px-6 py-3 rounded-xl font-semibold shadow-md"
-          >
-            Agendar Llamada Ahora
-          </a>
+        <a 
+          href="https://calendly.com/sara-koptiva/30min" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-green-500 hover:bg-green-600 transition-all duration-300 text-white px-6 py-3 rounded-xl font-semibold shadow-md"
+        >
+          Agendar Llamada Ahora
+        </a>
         </div>
       </div>
     </section>
